@@ -2,6 +2,8 @@ import os
 
 from flask import Flask
 
+from . import db, auth
+
 
 def create_app(test_config=None):
     # создаем и настраиваем приложение
@@ -29,8 +31,9 @@ def create_app(test_config=None):
     def wake_up():
         return 'Wake up, Neo...'
     
-    from . import db
     db.init_app(app)
+    
+    app.register_blueprint(auth.bp)
 
 
     return app
