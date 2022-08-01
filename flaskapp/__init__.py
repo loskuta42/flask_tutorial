@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, g, session
 
 from . import db, auth, blog
 
