@@ -20,7 +20,7 @@ def create_app(test_config=None):
         # иначе загрузить тестовый конфиг
         app.config.from_mapping(test_config)
 
-    # проверка, есть ли вообще папка экземпляра приложения
+    # проверка, есть ли папка экземпляра приложения
     try:
         os.makedirs(app.instance_path)
     except OSError:
