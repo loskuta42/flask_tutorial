@@ -27,7 +27,7 @@ def create():
         error = None
 
         if not title:
-            error = 'Записи обязательно необходим заголовок.'
+            error = 'Title is required.'
 
         if error is not None:
             flash(error)
@@ -52,7 +52,7 @@ def get_post(id, check_author=True):
     ).fetchone()
 
     if post is None:
-        abort(404, f"Запись с идентификатором {id} не существует.")
+        abort(404, f"Post id {id} doesn't exist.")
 
     if check_author and post['author_id'] != g.user['id']:
         abort(403, f"Пользователь {g.user['username']} не является автором записи.")
@@ -70,7 +70,7 @@ def update(id):
         error = None
 
         if not title:
-            error = 'Заголовок записи обязателен.'
+            error = 'Title is required.'
 
         if error is not None:
             flash(error)
